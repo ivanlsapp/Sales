@@ -17,7 +17,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por favor, verifica en las Propiedades la conexión a Internet",
+                    Message = Languages.TurnOnInternet,
                 };
             }
 
@@ -27,7 +27,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No hay conexión a Internet",
+                    Message = Languages.NoInternet,
                 };
             }
 
