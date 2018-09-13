@@ -1,8 +1,6 @@
-﻿
-[assembly: Xamarin.Forms.Dependency(typeof(Sales.Droid.Implementations.Localize))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(Sales.Droid.Implementations.Localize))]
 
-
-namespace Sales1.Droid.Implementations
+namespace Sales.Droid.Implementations
 {
     using System.Globalization;
     using System.Threading;
@@ -83,3 +81,4 @@ namespace Sales1.Droid.Implementations
             return netLanguage;
         }
     }
+}

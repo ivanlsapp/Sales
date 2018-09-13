@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
-using SalesInterfaces;
 using Sales.Resources;
+using Sales.Interfaces;
 
 public static class Languages
 {

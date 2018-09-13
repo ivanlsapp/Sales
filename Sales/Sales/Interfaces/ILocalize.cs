@@ -1,7 +1,11 @@
-﻿using System.Globalization;
-
-public interface ILocalize
+﻿namespace Sales.Interfaces
 {
-    CultureInfo GetCurrentCultureInfo();
-    void SetLocale(CultureInfo ci);
+    using System.Globalization;
+
+    public interface ILocalize
+    {
+        CultureInfo GetCurrentCultureInfo();
+
+        void SetLocale(CultureInfo ci);
+    }
 }
