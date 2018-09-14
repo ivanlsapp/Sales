@@ -21,14 +21,14 @@ namespace Sales.API.Controllers
         // GET: api/Products
         public IQueryable<Product> GetProducts()
         {
-            return db.Products;
+            returnthis.db.Products;
         }
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            Product product = awaitthis.db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -51,11 +51,11 @@ namespace Sales.API.Controllers
                 return BadRequest();
             }
 
-            db.Entry(product).State = EntityState.Modified;
+           this.db.Entry(product).State = EntityState.Modified;
 
             try
             {
-                await db.SaveChangesAsync();
+                awaitthis.db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -81,8 +81,8 @@ namespace Sales.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Products.Add(product);
-            await db.SaveChangesAsync();
+           this.db.Products.Add(product);
+            awaitthis.db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
         }
@@ -91,14 +91,14 @@ namespace Sales.API.Controllers
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> DeleteProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            Product product = awaitthis.db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
+           this.db.Products.Remove(product);
+            awaitthis.db.SaveChangesAsync();
 
             return Ok(product);
         }
@@ -107,14 +107,14 @@ namespace Sales.API.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+               this.db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool ProductExists(int id)
         {
-            return db.Products.Count(e => e.ProductId == id) > 0;
+            returnthis.db.Products.Count(e => e.ProductId == id) > 0;
         }
     }
 }
