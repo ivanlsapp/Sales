@@ -42,7 +42,7 @@
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert(Languages.Error, "connection.Message", Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
 
