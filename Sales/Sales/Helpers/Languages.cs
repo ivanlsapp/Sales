@@ -35,4 +35,39 @@ public static class Languages
     {
         get { return Resource.TurnOnInternet; }
     }
+
+    public static string AddProducts
+    {
+        get { return Resource.AddProducts; }
+    }
+
+    public static string Description
+    {
+        get { return Resource.Description; }
+    }
+
+    public static string DescriptionPlaceholder
+    {
+        get { return Resource.DescriptionPlaceholder; }
+    }
+
+    public static string Price
+    {
+        get { return Resource.Price; }
+    }
+
+    public static string PricePlaceholder
+    {
+        get { return Resource.PricePlaceholder; }
+    }
+
+    public static string Remarks
+    {
+        get { return Resource.Remarks; }
+    }
+
+    public static string Save
+    {
+        get { return Resource.Save; }
+    }
 }

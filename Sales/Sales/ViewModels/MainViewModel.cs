@@ -9,6 +9,9 @@
     {
         public ProductsViewModel Products { get; set; }
 
+        public AddProductViewModel AddProduct { get; set; }
+
+
         public MainViewModel()
         {
             this.Products = new ProductsViewModel();
@@ -21,9 +24,10 @@
                 return new RelayCommand(GoToAddProduct);
             }
         }
-
+  
         private async void GoToAddProduct()
         {
+            this.AddProduct = new AddProductViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new AddProductPage());
         }
     }
