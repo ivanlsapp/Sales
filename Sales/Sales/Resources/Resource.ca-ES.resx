@@ -153,4 +153,7 @@
   <data name="Save" xml:space="preserve">
     <value>Desar</value>
   </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Toca la imatge per canviar la imatge</value>
+  </data>
 </root>
