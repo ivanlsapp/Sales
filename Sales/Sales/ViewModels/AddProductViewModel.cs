@@ -122,6 +122,10 @@
                 return;
             }
 
+            var newProduct = (Product)response.Result;
+            var viewModel = ProductsViewModel.GetInstance();
+            viewModel.Products.Add(newProduct);
+
             this.isRunnig = false;
             this.IsEnabled = true;
             await Application.Current.MainPage.Navigation.PopAsync();

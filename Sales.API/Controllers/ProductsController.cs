@@ -1,5 +1,6 @@
 ﻿namespace Sales.API.Controllers
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -7,8 +8,8 @@
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
-    using Sales.Common.Models;
-    using Sales.Domain.Models;
+    using Common.Models;
+    using Domain.Models;
 
     public class ProductsController : ApiController
     {
@@ -17,14 +18,14 @@
         // GET: api/Products
         public IQueryable<Product> GetProducts()
         {
-            return this.db.Products;
+            return this.db.Products.OrderBy(p => p.Description);
         }
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            Product product = await this.db.Products.FindAsync(id);
+            var product = await this.db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -72,6 +73,9 @@
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> PostProduct(Product product)
         {
+            product.IsAvailable = true;
+            product.PublishOn = DateTime.Now.ToUniversalTime();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
