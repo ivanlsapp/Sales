@@ -1,15 +1,21 @@
 ﻿namespace Sales.ViewModels
 {
     using System.Windows.Input;
+    using Common.Models;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
-    using Sales.Common.Models;
+    using Plugin.Media;
+    using Plugin.Media.Abstractions;
     using Services;
     using Xamarin.Forms;
 
     public class AddProductViewModel : BaseViewModel
     {
         #region Attribute
+        private MediaFile file;
+
+        private ImageSource imageSource;
+
         private ApiService apiService;
 
         private bool isRunnig;
@@ -35,6 +41,12 @@
             get { return this.isEnabled; }
             set { this.SetValue(ref this.isEnabled, value); }
         }
+
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
+        }
         #endregion
 
         #region Constructors
@@ -46,6 +58,58 @@
         #endregion
 
         #region Commands
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+        }
+
+        private async void ChangeImage()
+        {
+            await CrossMedia.Current.Initialize();
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.ImageSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.NewPicture);
+
+            if (source == Languages.Cancel)
+            {
+                this.file = null;
+                return;
+            }
+
+            if (source == Languages.NewPicture)
+            {
+                this.file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (this.file != null)
+            {
+                this.ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+            }
+        }
+
+
         public ICommand SaveCommand
         {
             get
@@ -84,13 +148,14 @@
                 return;
             }
 
-            this.isRunnig = true;
+            this.IsRunning = true;
             this.IsEnabled = false;
+        
 
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                this.isRunnig = false;
+                this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error, 
@@ -113,7 +178,7 @@
 
             if (!response.IsSuccess)
             {
-                this.isRunnig = false;
+                this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -126,7 +191,7 @@
             var viewModel = ProductsViewModel.GetInstance();
             viewModel.Products.Add(newProduct);
 
-            this.isRunnig = false;
+            this.IsRunning = false;
             this.IsEnabled = true;
             await Application.Current.MainPage.Navigation.PopAsync();
         }

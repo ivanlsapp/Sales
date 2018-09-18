@@ -162,4 +162,17 @@
   <data name="PriceError" xml:space="preserve">
     <value>Heu d'introduir un preu un major que zero.!</value>
   </data>
+  <data name="ImageSource" xml:space="preserve">
+	<value> D'on vas a prendre la fotografies?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+	<value>De la galería</value>
+  </data>
+  <data name="NewPicture" xml:space="preserve">
+	<value>Fer una nova imatge</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+	<value>Cancelar</value>
+  </data>
+
 </root>

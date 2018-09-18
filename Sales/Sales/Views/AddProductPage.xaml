@@ -11,7 +11,10 @@
             <StackLayout
             Padding="5">
                 <Image
-                    Source="ic_action_camera_alt">
+                    Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
                 </Image>
                 <Label
                     FontSize="Small"

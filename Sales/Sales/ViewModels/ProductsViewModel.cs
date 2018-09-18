@@ -11,6 +11,8 @@
     public class ProductsViewModel : BaseViewModel
     {
         #region Attributes
+        private ImageSource imageSource;
+
         private ApiService apiService;
 
         private bool isRefreshing;
@@ -30,6 +32,12 @@
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
+
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
+        }
         #endregion
 
         #region Constructors
@@ -38,6 +46,7 @@
             instance = this;
             this.apiService = new ApiService();
             this.LoadProducts();
+            this.ImageSource = "Camara";
         }
         #endregion
 
