@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
@@ -17,11 +18,11 @@
 
         private bool isRefreshing;
 
-        private ObservableCollection<Product> products;
+        private ObservableCollection<ProductItemViewModel> products;
         #endregion
 
         #region Properties
-        public ObservableCollection<Product> Products
+        public ObservableCollection<ProductItemViewModel> Products
         {
             get { return this.products; }
             set { this.SetValue(ref this.products, value); }
@@ -89,7 +90,20 @@
                 return;
             }
             var list = (List<Product>)response.Result;
-            this.Products = new ObservableCollection<Product>(list);
+            var myList = list.Select(p => new ProductItemViewModel
+            {
+                Description = p.Description,
+                ImageArray = p.ImageArray,
+                ImagePath = p.ImagePath,
+                IsAvailable = p.IsAvailable,
+                Price = p.Price,
+                ProductId = p.ProductId,
+                PublishOn = p.PublishOn,
+                Remarks = p.Remarks,
+
+            });
+
+            this.Products = new ObservableCollection<ProductItemViewModel>(myList);
             this.IsRefreshing = false;
         }
         #endregion
