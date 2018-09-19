@@ -1,10 +1,12 @@
 ﻿namespace Sales.ViewModels
 {
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
-    using Services;
+     using Services;
+    using Views;
     using Xamarin.Forms;
 
     public class ProductItemViewModel : Product
@@ -21,6 +23,20 @@
         #endregion
 
         #region Commands
+        public ICommand EditProductCommand
+        {
+            get
+            {
+                return new RelayCommand(EditProduct);
+            }
+        }
+
+        private async void EditProduct()
+        {
+            MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
+            await Application.Current.MainPage.Navigation.PushAsync(new EditProductPage());
+        }
+
         public ICommand DeleteProductCommand
         {
             get
