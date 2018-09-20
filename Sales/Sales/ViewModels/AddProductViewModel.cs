@@ -18,7 +18,7 @@
 
         private ApiService apiService;
 
-        private bool isRunnig;
+        private bool isRunning;
 
         private bool isEnabled;
         #endregion
@@ -32,8 +32,8 @@
 
         public bool IsRunning
         {
-            get { return this.isRunnig; }
-            set { this.SetValue(ref this.isRunnig, value); }
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
         }
 
         public bool IsEnabled
