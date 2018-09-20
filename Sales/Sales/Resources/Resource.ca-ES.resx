@@ -198,4 +198,52 @@
   <data name="IsAvailable" xml:space="preserve">
     <value>Está disponiple?</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Recerca!</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Accedeix</value>
+  </data>
+  <data name="EMail" xml:space="preserve">
+    <value>ADREÇA ELECTRÒNICA</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Correu electrònic:</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contrasenya</value>
+  </data>
+  <data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Introduïu la vostra contrasenya</value>
+  </data>
+  <data name="Rememberme" xml:space="preserve">
+    <value>Recorda’m</value>
+  </data>
+  <data name="Forgot" xml:space="preserve">
+    <value>Heu oblidat la contrasenya?</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Nou usuari, l'administrador ha de validar manualment el seu usuari, rebrà un e-mail quan sigui acceptat.</value>
+  </data>
+  <data name="EmailValidation" xml:space="preserve">
+    <value>Heu d'introduir el seu e-mail.!</value>
+  </data>
+  <data name="PasswordValidation" xml:space="preserve">
+    <value>Heu d'introduir la contrasenya.!</value>
+  </data>
+  <data name="SomethingWrong" xml:space="preserve">
+    <value>El correu electrònic o la contrasenya no són vàlids.!</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menú</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>en quant a</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>Instal·lació</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Tancar sessió</value>
+  </data>
 </root>

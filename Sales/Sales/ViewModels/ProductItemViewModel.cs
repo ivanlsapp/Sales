@@ -1,11 +1,11 @@
 ﻿namespace Sales.ViewModels
 {
-    using System;
+    using Services;
     using System.Linq;
     using System.Windows.Input;
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
-     using Services;
+    using Helpers;
     using Views;
     using Xamarin.Forms;
 
@@ -75,11 +75,13 @@
             }
 
             var productsViewModel = ProductsViewModel.GetInstance();
-            var deletedProduct = productsViewModel.Products.Where(p => p.ProductId == this.ProductId).FirstOrDefault();
-            if (deletedProduct !=null)
+            var deletedProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.ProductId).FirstOrDefault();
+            if (deletedProduct != null)
             {
-                productsViewModel.Products.Remove(deletedProduct);
+                productsViewModel.MyProducts.Remove(deletedProduct);
             }
+
+            productsViewModel.RefreshList();
         }
         #endregion
     }
