@@ -15,7 +15,7 @@
             <SearchBar
                 HeightRequest="30"
                 Placeholder="{i18n:Translate Search}"
-                SearchCommand="{Binding SearchCommand}"
+                SearchCommand="{Binding Sea}"
                 Text="{Binding Filter}">
             </SearchBar>
             <ListView

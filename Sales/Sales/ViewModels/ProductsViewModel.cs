@@ -7,6 +7,7 @@
     using System.Windows.Input;
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
+    using Sales.Helpers;
     using Services;
     using Xamarin.Forms;
 
@@ -97,7 +98,7 @@
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
 
-            var response = await this.apiService.GetList<Product>(url, prefix, controller);
+            var response = await this.apiService.GetList<Product>(url, prefix, controller, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;

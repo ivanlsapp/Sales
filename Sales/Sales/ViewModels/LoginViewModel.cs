@@ -2,6 +2,8 @@
 {
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
+    using Sales.Helpers;
+    using Sales.Views;
     using Services;
     using Xamarin.Forms;
 
@@ -116,12 +118,15 @@
                 return;
             }
 
+            Settings.IsRemembered = this.IsRemembered;
+            Settings.AccessToken = token.AccessToken;
+            Settings.TokenType = token.TokenType;
+
             this.IsRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.DisplayAlert(
-                    "ok",
-                    "Fuck Yeaaa!!!!!",
-                    Languages.Accept);
+
+            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            Application.Current.MainPage = new ProductsPage();
 
         }
         #endregion

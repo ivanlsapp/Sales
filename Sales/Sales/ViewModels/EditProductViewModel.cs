@@ -16,7 +16,7 @@
         #region Attributes
         private Product product;
 
-       private MediaFile file;
+        private MediaFile file;
 
         private ImageSource imageSource;
 
