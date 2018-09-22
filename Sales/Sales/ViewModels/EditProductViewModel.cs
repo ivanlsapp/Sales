@@ -6,8 +6,11 @@
     using Plugin.Media.Abstractions;
     using Sales.Helpers;
     using Services;
+<<<<<<< HEAD
     using System;
     using System.Linq;
+=======
+>>>>>>> parent of cd6f919... Parte 30 Editar Producto Parte 2
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -223,13 +226,12 @@
             if (this.file != null)
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
-                this.Product.ImageArray = imageArray;
             }
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.ProductId);
+            var response = await this.apiService.Post(url, prefix, controller, product);
 
             if (!response.IsSuccess)
             {
@@ -244,12 +246,6 @@
 
             var newProduct = (Product)response.Result;
             var productsViewModel = ProductsViewModel.GetInstance();
-            var oldProduct = productsViewModel.MyProducts.Where(p => p.ProductId == this.Product.ProductId).FirstOrDefault();
-            if (oldProduct != null)
-            {
-                productsViewModel.MyProducts.Remove(oldProduct);
-            }
-
             productsViewModel.MyProducts.Add(newProduct);
             productsViewModel.RefreshList();
 
