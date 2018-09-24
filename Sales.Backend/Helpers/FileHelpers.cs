@@ -3,7 +3,7 @@
     using System.IO;
     using System.Web;
 
-    public static class FileHelpers
+    public static class FilesHelper
     {
         public static string UploadPhoto(HttpPostedFileBase file, string folder)
         {

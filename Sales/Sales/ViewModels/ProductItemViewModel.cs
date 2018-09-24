@@ -34,7 +34,7 @@
         private async void EditProduct()
         {
             MainViewModel.GetInstance().EditProduct = new EditProductViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new EditProductPage());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new EditProductPage());
         }
 
         public ICommand DeleteProductCommand

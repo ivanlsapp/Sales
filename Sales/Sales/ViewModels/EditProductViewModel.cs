@@ -6,11 +6,7 @@
     using Plugin.Media.Abstractions;
     using Sales.Helpers;
     using Services;
-<<<<<<< HEAD
-    using System;
     using System.Linq;
-=======
->>>>>>> parent of cd6f919... Parte 30 Editar Producto Parte 2
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -54,6 +50,7 @@
             get { return this.imageSource; }
             set { this.SetValue(ref this.imageSource, value); }
         }
+
         #endregion
 
         #region Constructors
@@ -123,7 +120,11 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.Navigation.PopAsync();
+
+            //await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+            
+
         }
 
         public ICommand ChangeImageCommand
@@ -185,6 +186,8 @@
                 return new RelayCommand(Save);
             }
         }
+
+        public object Navigation { get; private set; }
 
         private async void Save()
         {
@@ -251,7 +254,10 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.Navigation.PopAsync();
+            //await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopModalAsync();
+
+            //Page ProductItemViewModel = await PopModalAsync();
         }
         #endregion
     }

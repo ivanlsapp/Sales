@@ -57,7 +57,7 @@ namespace Sales.Backend.Controllers
 
                 if (view.ImageFile != null)
                 {
-                    pic = FileHelpers.UploadPhoto(view.ImageFile, folder);
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
                     pic = $"{folder}/{pic}";
                 }
 
@@ -130,7 +130,7 @@ namespace Sales.Backend.Controllers
 
                 if (view.ImageFile != null)
                 {
-                    pic = FileHelpers.UploadPhoto(view.ImageFile, folder);
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
                     pic = $"{folder}/{pic}";
                 }
 
