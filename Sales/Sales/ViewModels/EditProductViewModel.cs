@@ -100,7 +100,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.Delete(url, prefix, controller, this.Product.ProductId);
+            var response = await this.apiService.Delete(url, prefix, controller, this.Product.ProductId, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
@@ -121,8 +121,8 @@
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            //await Application.Current.MainPage.Navigation.PopAsync();
-            await Application.Current.MainPage.Navigation.PopToRootAsync();
+            await App.Navigator.PopAsync();
+            //await Application.Current.MainPage.Navigation.PopToRootAsync();
             
 
         }
@@ -234,7 +234,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.Post(url, prefix, controller, product);
+            var response = await this.apiService.Post(url, prefix, controller, product, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
@@ -254,11 +254,7 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
-            //await Application.Current.MainPage.Navigation.PopAsync();
-            await Application.Current.MainPage.Navigation.PopModalAsync();
-
-            //Page ProductItemViewModel = await PopModalAsync();
-        }
+            await App.Navigator.PopAsync(); }
         #endregion
     }
 }

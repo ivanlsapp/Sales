@@ -13,17 +13,28 @@
             }
         }
 
-        #region Setting Constants
+        private const string accessToken = "AccessToken";
 
         private const string tokenType = "TokenType";
-        private const string accessToken = "AccessToken";
+
         private const string isRemembered = "IsRemembered";
 
         private static readonly string stringDefault = string.Empty;
+
         private static readonly bool booleanDefault = false;
 
-        #endregion
 
+        public static string AccessToken
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(accessToken, stringDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(accessToken, value);
+            }
+        }
 
         public static string TokenType
         {
@@ -37,17 +48,6 @@
             }
         }
 
-        public static string AccessToken
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(accessToken, stringDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(accessToken, value);
-            }
-        }
         public static bool IsRemembered
         {
             get

@@ -122,12 +122,11 @@
             Settings.AccessToken = token.AccessToken;
             Settings.TokenType = token.TokenType;
 
+            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            Application.Current.MainPage = new MasterPage();
+
             this.IsRunning = false;
             this.IsEnabled = true;
-
-            MainViewModel.GetInstance().Products = new ProductsViewModel();
-            Application.Current.MainPage = new ProductsPage();
-
         }
         #endregion
     }
