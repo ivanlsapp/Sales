@@ -5,14 +5,16 @@
     using Android.Content.PM;
     using Android.OS;
     using Android.Runtime;
+    using ImageCircle.Forms.Plugin.Droid;
     using Plugin.CurrentActivity;
     using Plugin.Permissions;
 
     [Activity(
         Label = "Sales", 
-        Icon = "@mipmap/icon", 
+        Icon = "@drawable/ic_launcher", 
         Theme = "@style/MainTheme", 
-        MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+        MainLauncher = false, 
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -22,6 +24,7 @@
 
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

@@ -13,7 +13,7 @@
             BindingContext="{Binding Products}"
             Padding="5">
             <SearchBar
-                HeightRequest="30"
+                HeightRequest="40"
                 Placeholder="{i18n:Translate Search}"
                 SearchCommand="{Binding Sea}"
                 Text="{Binding Filter}">
